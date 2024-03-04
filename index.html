@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GadgetLand - Your Tech Haven</title>
+    <link rel="icon" href="/gamingconsole.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <!-- Add FontAwesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <!-- Add custom fonts -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Open+Sans:wght@400;700&display=swap">
+    <style>
+        /* Add some CSS for changing background color */
+        body {
+            transition: background-color 0.3s ease-in-out;
+            font-family: 'Roboto', sans-serif;
+            /* Use a linear gradient for the background */
+            background: linear-gradient(to bottom, #000000, #000000);
+            /* background: #000; */
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            /* Change text color to white */
+        }
+
+        /* Change the background color of the product container and items */
+        .product-container {
+            /* background-color: rgba(0, 0, 0, 0.5); */
+            background: linear-gradient(to bottom, #000000, #252323);
+            /* background:#000; */
+            /* background: linear-gradient(to bottom, #333, #555); */
+            /* Use a semi-transparent black background */
+        }
+
+        /* Change the background color of individual product cards */
+        .product {
+            background-color: #444;
+            /* Change the background color of product cards */
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+            /* Adjust the box-shadow to match the new theme */
+            border-radius: 8px;
+            margin: 20px;
+            padding: 20px;
+            max-width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Change the button and link colors to match the theme */
+        .buy-button,
+        nav ul li a {
+            background-color: #007BFF;
+            color: #fff;
+            transition: background-color 0.3s ease;
+        }
+
+        .buy-button:hover,
+        nav ul li a:hover {
+            background-color: #0056b3;
+        }
+
+        /* Rest of your CSS remains the same... */
+
+
+
+        /* Add CSS for product card animation */
+        .product {
+            transform: scale(1);
+            transition: transform 0.2s ease-in-out;
+            cursor: pointer;
+        }
+
+        /* Add CSS for button hover animation */
+        .buy-button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Media queries for responsiveness */
+        @media (max-width: 550px) {
+            .product-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .product {
+                width: 90%;
+                margin: 10px 0;
+            }
+        }
+
+        /* Add hover effect for navigation items */
+        nav ul li a {
+            text-decoration: none;
+            padding: 10px 15px;
+            color: #333;
+            background-color: #fff;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        nav ul li a:hover {
+            background-color: #333;
+            color: #fff;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            background-color: #fff;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            /* Ensure the header is above other content */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        /* Styling for the product container */
+        .product-container {
+            margin-top: 80px;
+            /* Adjust this value as needed */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Styling for individual product cards */
+        .product {
+            /* background-color: #fff; */
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin: 20px;
+            padding: 20px;
+            max-width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product h2 {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+
+        .product p {
+            font-size: 16px;
+            margin-top: 10px;
+            color: white;
+        }
+
+        .product-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .product-price {
+            font-size: 24px;
+            color: darkorange;
+        }
+
+        .buy-button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .buy-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Styling for the contact form */
+        .contact-form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: black;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .contact-form h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #e4d5d5;
+        }
+
+        .contact-form label {
+            display: block;
+            font-size: 16px;
+            text-align: left;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: black;
+            color: white;
+            font-size: 16px;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+        }
+
+        .contact-form button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #555;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Styling for product comparison section */
+        .product-comparison {
+            margin: 40px auto;
+            max-width: 800px;
+            padding: 20px;
+            background-color: black;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .product-comparison h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #e4d5d5;
+        }
+
+        .product-selection {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .product-selection label {
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .product-selection select {
+            width: 200px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            background: black;
+            color: whitesmoke;
+            cursor: pointer;
+        }
+
+        .product-selection button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .product-selection button:hover {
+            background-color: #555;
+        }
+
+        .comparison-results table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .comparison-results th,
+        .comparison-results td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+
+        .comparison-results th {
+            /* background-color: #f0f0f0; */
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo">
+            <h1>GadgetLand</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#"><i class="fas fa-box"></i> Products</a></li>
+                <li><a href="#"><i class="fas fa-phone"></i> Contact</a></li>
+                <li><a href="#"><i class="fas fa-info"></i> About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <section class="product-container">
+        <!-- Product cards for all 9 items -->
+        <!-- Product 1 -->
+        <div class="product" onmouseover="scaleProduct(this)" onmouseout="resetScale(this)">
+            <div class="product-image">
+                <img src="laptop.jpg" alt="Laptop">
+            </div>
+            <h2><i class="fas fa-laptop"></i> Laptop</h2>
+            <p>Powerful and sleek laptops for work and play.</p>
+            <div class="product-details">
+                <span class="product-price">$999</span>
+                <!-- Add JavaScript to change background color -->
+                <button class="buy-button" onclick="changeBackgroundColor()">Buy Now</button>
+            </div>
+        </div>
+        <!-- Product 2 -->
+        <div class="product" onmouseover="scaleProduct(this)" onmouseout="resetScale(this)">
+            <div class="product-image">
+                <img src="tablet.jpg" alt="Tablet">
+            </div>
+            <h2><i class="fas fa-tablet"></i> Tablet</h2>
+            <p>Lightweight and versatile tablets for entertainment and productivity.</p>
+            <div class="product-details">
+                <span class="product-price">$399</span>
+                <!-- Add JavaScript to change background color -->
+                <button class="buy-button" onclick="changeBackgroundColor()">Buy Now</button>
+            </div>
+        </div>
+        <!-- Product 3 -->
+        <div class="product" onmouseover="scaleProduct(this)" onmouseout="resetScale(this)">
+            <div class="product-image">
+                <img src="iphone.jpg" alt="iPhone">
+            </div>
+            <h2><i class="fas fa-mobile-alt"></i> iPhone</h2>
+            <p>Latest iPhone models with cutting-edge features.</p>
+            <div class="product-details">
+                <span class="product-price">$799</span>
+                <!-- Add JavaScript to change background color -->
+                <button class="buy-button" onclick="changeBackgroundColor()">Buy Now</button>
+            </div>
+        </div>
+        <!-- Product 4 -->
+        <div class="product" onmouseover="scaleProduct(this)" onmouseout="resetScale(this)">
+            <div class="product-image">
+                <img src="tv.jpg" alt="TV">
+            </div>
+            <h2><i class="fas fa-tv"></i> TV</h2>
+            <p>Immersive 4K Ultra HD Smart TVs for your entertainment.</p>
+            <div class="product-details">
+                <span class="product-price">$699</span>
+                <!-- Add JavaScript to change background color -->
+                <button class="buy-button" onclick="changeBackgroundColor()">Buy Now</button>
+            </div>
+        </div>
+        <!-- Product 5 -->
+        <div class="product" onmouseover="scaleProduct(this)" onmouseout="resetScale(this)">
+            <div class="product-image">
+                <img src="ipad.jpg" alt="iPad">
+            </div>
+            <h2><i class="fas fa-tablet-alt"></i> iPad</h2>
+            <p>Lightweight and powerful iPads for work and creativity.</p>
+            <div class="product-details">
+                <span class="product-price">$499</span>
+                <!-- Add JavaScript to change background color -->
+                <button class="buy-button" onclick="changeBackgroundColor()">Buy Now</button>
+            </div>
+        </div>
+        <!-- Product 6 -->
+        <div class="product" onmouseover="scaleProduct(this)" onmouseout="resetScale(this)">
+            <div class="product-image">
+                <img src="camera.jpg" alt="Camera">
+            </div>
+            <h2><i class="fas fa-camera"></i> Camera</h2>
+            <p>Capture life's moments with high-quality cameras.</p>
+            <div class="product-details">
+                <span class="product-price">$999</span>
+                <!-- Add JavaScript to change background color -->
+                <button class="buy-button" onclick="changeBackgroundColor()">Buy Now</button>
+            </div>
+        </div>
+        <!-- Product 7 -->
+        <div class="product" onmouseover="scaleProduct(this)" onmouseout="resetScale(this)">
+            <div class="product-image">
+                <img src="smartwatch.jpg" alt="Smartwatch">
+            </div>
+            <h2><i class="fas fa-watch"></i> Smartwatch</h2>
+            <p>Stay connected with a feature-rich smartwatch.</p>
+            <div class="product-details">
+                <span class="product-price">$399</span>
+                <!-- Add JavaScript to change background color -->
+                <button class="buy-button" onclick="changeBackgroundColor()">Buy Now</button>
+            </div>
+        </div>
+        <!-- Product 8 -->
+        <div class="product" onmouseover="scaleProduct(this)" onmouseout="resetScale(this)">
+            <div class="product-image">
+                <img src="headphones.jpg" alt="Headphones">
+            </div>
+            <h2><i class="fas fa-headphones"></i> Headphones</h2>
+            <p>Immerse yourself in music with premium headphones.</p>
+            <div class="product-details">
+                <span class="product-price">$799</span>
+                <!-- Add JavaScript to change background color -->
+                <button class="buy-button" onclick="changeBackgroundColor()">Buy Now</button>
+            </div>
+        </div>
+        <!-- Product 9 -->
+        <div class="product" onmouseover="scaleProduct(this)" onmouseout="resetScale(this)">
+            <div class="product-image">
+                <img src="speaker.jpg" alt="Speaker">
+            </div>
+            <h2><i class="fas fa-volume-up"></i> Speaker</h2>
+            <p>Elevate your audio experience with powerful speakers.</p>
+            <div class="product-details">
+                <span class="product-price">$699</span>
+                <!-- Add JavaScript to change background color -->
+                <button class="buy-button" onclick="changeBackgroundColor()">Buy Now</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-form">
+        <h2>Contact Us</h2>
+        <form id="contactForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="button" onclick="submitForm()">Submit</button>
+        </form>
+    </section>
+
+    <section class="product-comparison">
+        <h2>Product Comparison</h2>
+        <div class="product-selection">
+            <label for="product1">Select Product 1:</label>
+            <select id="product1">
+                <!-- Add options for products -->
+                <option value="laptop">Laptop</option>
+                <option value="tablet">Tablet</option>
+                <option value="iphone">iPhone</option>
+                <option value="tv">TV</option>
+                <option value="ipad">iPad</option>
+                <option value="camera">Camera</option>
+                <option value="smartwatch">Smartwatch</option>
+                <option value="headphones">Headphones</option>
+                <option value="speaker">Speaker</option>
+            </select>
+            <label for="product2">Select Product 2:</label>
+            <select id="product2">
+                <!-- Add options for products -->
+                <option value="laptop">Laptop</option>
+                <option value="tablet">Tablet</option>
+                <option value="iphone">iPhone</option>
+                <option value="tv">TV</option>
+                <option value="ipad">iPad</option>
+                <option value="camera">Camera</option>
+                <option value="smartwatch">Smartwatch</option>
+                <option value="headphones">Headphones</option>
+                <option value="speaker">Speaker</option>
+            </select>
+            <button onclick="compareProducts()">Compare</button>
+        </div>
+        <div class="comparison-results" id="comparisonResults">
+            <!-- Comparison results table will be displayed here -->
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2023 Shopify. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript to change background color and product card animation -->
+    <script>
+        function changeBackgroundColor() {
+            const colors = ["#ffcccb", "#b19cd9", "#a7e9af", "#f0e68c"];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.body.style.backgroundColor = randomColor;
+        }
+
+        function scaleProduct(product) {
+            product.style.transform = "scale(1.1)";
+        }
+
+        function resetScale(product) {
+            product.style.transform = "scale(1)";
+        }
+
+        // Function to clear form fields
+        function clearFormFields() {
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("message").value = "";
+        }
+
+        // Function to submit the form
+        function submitForm() {
+            alert("Form submitted! (Thanks for giving us your time!)");
+            clearFormFields(); // Clear form fields after submission
+        }
+
+        // Function to compare products
+        function compareProducts() {
+            const product1 = document.getElementById("product1").value;
+            const product2 = document.getElementById("product2").value;
+
+            // Product details for comparison (replace with actual details)
+            const productDetails1 = {
+                name: "Product 1",
+                price: "$999",
+                feature1: "12 GB RAM",
+                feature2: "2TB STORAGE",
+                feature3: "ACER (GAMING LAPTOP) 3.5 KG WEIGHT"
+            };
+
+            const productDetails2 = {
+                name: "Product 2",
+                price: "$499",
+                feature1: "8 GB RAM",
+                feature2: "1TB STORAGE",
+                feature3: "IPAD (APPLE BIONIC CHIP 5) 1.75 KG WEIGHT"
+            };
+
+            // Display comparison results in a table
+            const comparisonResults = `
+                <table class="comparison-table">
+                    <tr>
+                        <th>Attribute</th>
+                        <th>${productDetails1.name}</th>
+                        <th>${productDetails2.name}</th>
+                    </tr>
+                    <tr>
+                        <td>Price</td>
+                        <td>${productDetails1.price}</td>
+                        <td>${productDetails2.price}</td>
+                    </tr>
+                    <tr>
+                        <td>Feature 1</td>
+                        <td>${productDetails1.feature1}</td>
+                        <td>${productDetails2.feature1}</td>
+                    </tr>
+                    <tr>
+                        <td>Feature 2</td>
+                        <td>${productDetails1.feature2}</td>
+                        <td>${productDetails2.feature2}</td>
+                    </tr>
+                    <tr>
+                        <td>Feature 3</td>
+                        <td>${productDetails1.feature3}</td>
+                        <td>${productDetails2.feature3}</td>
+                    </tr>
+                </table>
+            `;
+
+            document.getElementById("comparisonResults").innerHTML = comparisonResults;
+        }
+    </script>
+</body>
+
+</html>
